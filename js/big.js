@@ -28,25 +28,28 @@ $(document).ready(function() {
         if (diff == 0) {
           name = elipsify(playlist.tracks[track].data.name, 40);
           document.getElementById('current').innerHTML = 
-            '<img src="' + playlist.tracks[track].image + '" width="400" />' +
-            '<h1 style="font-size: 50px; line-height: 50px">' + name + '</h1>' +
-            '<h2 style="font-size: 30px; line-height: 30px">' + playlist.tracks[track].data.artists[0].name  + '</h2>';
+            '<img src="' + playlist.tracks[track].image + '" />' +
+            '<h1>' + name + '</h1>' +
+            '<h2>' + playlist.tracks[track].data.artists[0].name  + '</h2>';
         }
 
 
         if (diff >= 1 && diff < 4 ) {
           name = elipsify(playlist.tracks[track].data.name, 25);    
-          list = list + '<li style="font-size: 35px; line-height: 30px; margin-bottom: 10px;">' + 
-            name + '<br/><em style="font-size: 25px;">' + 
-            playlist.tracks[track].data.artists[0].name + '</em></li>'; 
+          list = list + '<h1>' + name + '</h1>' +
+          '<h2>' + playlist.tracks[track].data.artists[0].name + '</h2>'; 
         }
     
       }
     }
-    document.getElementById('songs').innerHTML = list + '</ul>';
+    document.getElementById('songs').innerHTML = list;
   }
 
   setInterval(updateNowPlayingWidget, 3000);
+
+  //twitter feed
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
 });
 
 
